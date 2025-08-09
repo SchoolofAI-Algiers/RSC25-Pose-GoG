@@ -1,0 +1,1 @@
+[ Sat Aug  9 13:06:57 2025 ] using warm up, epoch: 5
