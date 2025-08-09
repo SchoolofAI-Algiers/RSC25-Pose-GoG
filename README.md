@@ -67,7 +67,7 @@ Put downloaded data into the following directory structure:
  python seq_transformation.py
 ```
 # Remarks
-- if you ever encounter this error : AttributeError: module 'numpy' has no attribute 'int' , just search 'for np.int' in all the project , and replace them by 'int'.The code uses an old version of numpy that has a deperecated attribut.
+- if you encounter this error : AttributeError: module 'numpy' has no attribute 'int' , just search 'for np.int' in all the project , and replace them by 'int'.The code uses an old version of numpy that has a deprecated attribut.
 
 - The intial project was using a module named 'resource' that is only available on Linux, the problem was fixed in order to make it run on windows too.
  
