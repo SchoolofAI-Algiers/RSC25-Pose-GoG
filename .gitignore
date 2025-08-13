@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+/data/nturgb_raw
+*.log
+data/ntu/denoised_data/
+data/ntu/raw_data/
+processed_data/
+work_dir/
