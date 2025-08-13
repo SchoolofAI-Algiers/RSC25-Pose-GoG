@@ -1,0 +1,60 @@
+# graph/ntu_rgb_d.py
+
+import sys
+import numpy as np
+
+from graph import graph_utils
+
+
+# This script constructs a graph representation for the NTU RGB+D dataset that models 26 joints.
+
+
+# bone_pairs.py
+
+ntu_pairs = (
+    (1, 2), (2, 21), (3, 21), (4, 3), (5, 21), (6, 5),
+    (7, 6), (8, 7), (9, 21), (10, 9), (11, 10), (12, 11),
+    (13, 1), (14, 13), (15, 14), (16, 15), (17, 1), (18, 17),
+    (19, 18), (20, 19), (22, 23), (21, 21), (23, 8), (24, 25),(25, 12)
+)
+
+
+num_node = 26
+self_link = [(i, i) for i in range(num_node)]
+inward_ori_index = [(1, 2), (2, 21), (3, 21), (4, 3), (5, 21), (6, 5), (7, 6),
+                    (8, 7), (9, 21), (10, 9), (11, 10), (12, 11), (13, 1),
+                    (14, 13), (15, 14), (16, 15), (17, 1), (18, 17), (19, 18),
+                    (20, 19), (22, 23), (23, 8), (24, 25), (25, 12)]
+inward = [(i - 1, j - 1) for (i, j) in inward_ori_index]
+outward = [(j, i) for (i, j) in inward]
+
+# make graph undirected
+neighbor = inward + outward
+
+class Graph:
+    def __init__(self, labeling_mode='spatial'):
+        self.num_node = num_node
+        self.self_link = self_link
+        self.inward = inward
+        self.outward = outward
+        self.neighbor = neighbor
+        self.A = self.get_adjacency_matrix(labeling_mode)
+
+    def get_adjacency_matrix(self, labeling_mode=None):
+        if labeling_mode is None:
+            return self.A
+        if labeling_mode == 'spatial':
+            A = graph_utils.get_spatial_graph(self_link=self_link,
+                                                            inward=inward,
+                                                            outward=outward,
+                                                            num_node=num_node)
+        else:
+            raise ValueError()
+        return A
+    
+# test
+
+if __name__ == "__main__":
+    graph = Graph()
+    print("Adjacency Matrix:")
+    print(graph.A[2:,:,:])
