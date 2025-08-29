@@ -20,4 +20,3 @@ RESULTS_TABLES = RESULTS / "tables"
 # Ensure directories exist
 for path in [DATA_RAW, RAW_SKELS, DENOISED_SKELS, DATA_PROCESSED]:
     path.mkdir(parents=True, exist_ok=True)
-
