@@ -11,30 +11,64 @@ This module processes the NTU RGB+D skeletal action recognition dataset by:
 - Splitting data into train/test sets for cross-subject (CS) and cross-view (CV) evaluations
 """
 
+
+"""
+Output Files
+------------
+Two processed datasets are generated in NPZ format:
+
+1. NTU60_CS.npz   # Cross-Subject split
+2. NTU60_CV.npz   # Cross-View split
+
+Each file contains 4 arrays:
+- x_train : np.ndarray, shape (N_train, 300, 150)
+- y_train : np.ndarray, shape (N_train, 60)
+- x_test  : np.ndarray, shape (N_test, 300, 150)
+- y_test  : np.ndarray, shape (N_test, 60)
+
+Where:
+- N_train, N_test are the number of training / testing samples
+- 300 = maximum number of frames per sequence (zero-padded)
+- 150 = 2 persons × 25 joints × 3 coordinates (x,y,z)
+- 60 = number of action classes (one-hot encoded)
+
+Preprocessed Skeleton Properties
+--------------------------------
+Every sequence has been:
+- Centered   : spine base (joint-2) aligned to origin (0,0,0)
+- Normalized : body scaled by spine length (consistent body size)
+- Aligned    : all sequences padded to the same length (300 frames)
+- Two-person : single-person sequences zero-padded to fit (150 features)
+
+These NPZ files are ready-to-use for training action recognition models
+on the NTU RGB+D 60 dataset under the standard CS and CV evaluation
+protocols.
+"""
+
 import os
 import os.path as osp
 import numpy as np
 import pickle
 import logging
-import h5py
 from typing import List, Tuple, Union, Optional
 from sklearn.model_selection import train_test_split
+from project_setup import DATA_PROCESSED
 
 # File paths configuration
-root_path: str = './'
-stat_path: str = osp.join(root_path, 'statistics')
-setup_file: str = osp.join(stat_path, 'setup.txt')
-camera_file: str = osp.join(stat_path, 'camera.txt')
-performer_file: str = osp.join(stat_path, 'performer.txt')
-replication_file: str = osp.join(stat_path, 'replication.txt')
-label_file: str = osp.join(stat_path, 'label.txt')
-skes_name_file: str = osp.join(stat_path, 'skes_available_name.txt')
+root_path = DATA_PROCESSED
+stat_path = osp.join(root_path, 'statistics')
+setup_file = osp.join(stat_path, 'setup.txt')
+camera_file = osp.join(stat_path, 'camera.txt')
+performer_file = osp.join(stat_path, 'performer.txt')
+replication_file = osp.join(stat_path, 'replication.txt')
+label_file = osp.join(stat_path, 'label.txt')
+skes_name_file = osp.join(stat_path, 'skes_available_name.txt')
 
-denoised_path: str = osp.join(root_path, 'denoised_data')
-raw_skes_joints_pkl: str = osp.join(denoised_path, 'raw_denoised_joints.pkl')
-frames_file: str = osp.join(denoised_path, 'frames_cnt.txt')
+denoised_path = osp.join(root_path, 'denoised_data')
+raw_skes_joints_pkl = osp.join(denoised_path, 'raw_denoised_joints.pkl')
+frames_file = osp.join(denoised_path, 'frames_cnt.txt')
 
-save_path: str = './'
+save_path = DATA_PROCESSED
 
 if not osp.exists(save_path):
     os.mkdir(save_path)

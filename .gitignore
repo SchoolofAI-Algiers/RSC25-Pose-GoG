@@ -5,3 +5,9 @@ __pycache__/
 *.pyd
 /data/nturgb_raw
 *.log
+*.npz
+/data/ntu/denoised_data
+/data/ntu/raw_data
+
+processed_data/*
+/work_dir

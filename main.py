@@ -1,6 +1,7 @@
 #!/usr/bin/env python
+# main.py
 """
-Spatial Temporal Graph Convolution Network (ST-GCN) Training/Testing Processor
+Training/Testing Processor
 
 This module provides a comprehensive training and testing framework for skeleton-based
 action recognition using Spatial Temporal Graph Convolutional Networks. It supports:
@@ -38,12 +39,19 @@ import yaml
 from tensorboardX import SummaryWriter
 from tqdm import tqdm
 
-from torchlight import DictAction
+class DictAction(argparse.Action):
+    def __init__(self, option_strings, dest, nargs=None, **kwargs):
+        if nargs is not None:
+            raise ValueError("nargs not allowed")
+        super(DictAction, self).__init__(option_strings, dest, **kwargs)
 
-# Resource management for file handles
-import resource
-rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
-resource.setrlimit(resource.RLIMIT_NOFILE, (2048, rlimit[1]))
+    def __call__(self, parser, namespace, values, option_string=None):
+        input_dict = eval(f'dict({values})')  #pylint: disable=W0123
+        output_dict = getattr(namespace, self.dest)
+        for k in input_dict:
+            output_dict[k] = input_dict[k]
+        setattr(namespace, self.dest, output_dict)
+
 
 
 def init_seed(seed: int) -> None:
@@ -140,7 +148,7 @@ def get_parser() -> argparse.ArgumentParser:
     parser.add_argument('-model_saved_name', default='')
     parser.add_argument(
         '--config',
-        default='./config/nturgbd-cross-view/test_bone.yaml',
+        default='./config/nturgbd-cross-subject/default.yaml',
         help='path to the configuration file')
 
     # Training/testing phase

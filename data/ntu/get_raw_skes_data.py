@@ -27,6 +27,7 @@ import numpy as np
 import pickle
 import logging
 from typing import Dict, List, Tuple, Optional, Any, Union
+from project_setup import DATA_STATS , DATA_RAW , RAW_SKELS
 
 # Type definitions for better code readability
 BodyData = Dict[str, Union[np.ndarray, List[int], float]]
@@ -293,24 +294,22 @@ if __name__ == '__main__':
         - Logs detailed information about any issues encountered
     """
     # Configuration paths
-    save_path: str = './'
-    skes_path: str = '../nturgbd_raw/nturgb+d_skeletons/'
-    stat_path: str = osp.join(save_path, 'statistics')
+
+    save_path = RAW_SKELS
+    skes_path = DATA_RAW
+    stat_path = DATA_STATS
     
-    # Create output directory if it doesn't exist
-    if not osp.exists('./raw_data'):
-        os.makedirs('./raw_data')
 
     # Define input and output file paths
     skes_name_file: str = osp.join(stat_path, 'skes_available_name.txt')
-    save_data_pkl: str = osp.join(save_path, 'raw_data', 'raw_skes_data.pkl')
-    frames_drop_pkl: str = osp.join(save_path, 'raw_data', 'frames_drop_skes.pkl')
+    save_data_pkl: str = osp.join(save_path, 'raw_skes_data.pkl')
+    frames_drop_pkl: str = osp.join(save_path, 'frames_drop_skes.pkl')
 
     # Setup logging for dropped frames
     frames_drop_logger = logging.getLogger('frames_drop')
     frames_drop_logger.setLevel(logging.INFO)
     frames_drop_logger.addHandler(
-        logging.FileHandler(osp.join(save_path, 'raw_data', 'frames_drop.log'))
+        logging.FileHandler(osp.join(save_path, 'frames_drop.log'))
     )
     frames_drop_skes: FramesDropDict = dict()
 

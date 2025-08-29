@@ -479,13 +479,16 @@ dependencies = [
     { name = "opencv-python" },
     { name = "pillow" },
     { name = "pyyaml" },
+    { name = "resource" },
     { name = "scikit-learn" },
     { name = "seaborn" },
     { name = "tensorboard" },
+    { name = "tensorboardx" },
     { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
     { name = "torch", version = "2.8.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
     { name = "torchaudio" },
     { name = "torchpack" },
+    { name = "torchsummary" },
     { name = "torchvision", version = "0.23.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
     { name = "torchvision", version = "0.23.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
@@ -499,13 +502,16 @@ requires-dist = [
     { name = "opencv-python", specifier = ">=4.12.0.88" },
     { name = "pillow", specifier = ">=11.3.0" },
     { name = "pyyaml", specifier = ">=6.0.2" },
+    { name = "resource", specifier = ">=0.2.1" },
     { name = "scikit-learn", specifier = ">=1.7.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "tensorboard", specifier = ">=2.20.0" },
+    { name = "tensorboardx", specifier = ">=2.6.4" },
     { name = "torch", marker = "sys_platform != 'linux' and sys_platform != 'win32'", specifier = ">=2.8.0" },
     { name = "torch", marker = "sys_platform == 'linux' or sys_platform == 'win32'", specifier = ">=2.8.0", index = "https://download.pytorch.org/whl/cu126" },
     { name = "torchaudio", specifier = ">=2.8.0" },
     { name = "torchpack", specifier = ">=0.3.1" },
+    { name = "torchsummary", specifier = ">=1.5.1" },
     { name = "torchvision", marker = "sys_platform != 'linux' and sys_platform != 'win32'", specifier = ">=0.23.0" },
     { name = "torchvision", marker = "sys_platform == 'linux' or sys_platform == 'win32'", specifier = ">=0.23.0", index = "https://download.pytorch.org/whl/cu126" },
 ]
@@ -717,6 +723,15 @@ wheels = [
 ]
 
 [[package]]
+name = "jsonform"
+version = "0.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jsonschema" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4f/b7/b9491ba4b709d0616fab15a89f8efe4d3a7924652e1fdd4f15303e9ecdf0/JsonForm-0.0.2.tar.gz", hash = "sha256:71f8b7a21538e30ca984b69dde04f02980cd6cdc2183a18aa7ca02d9509988e6", size = 2445, upload-time = "2015-01-16T05:32:49.501Z" }
+
+[[package]]
 name = "jsonpointer"
 version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -764,6 +779,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/bf/ce/46fbd9c8119cfc358
 wheels = [
     { url = "https://files.pythonhosted.org/packages/01/0e/b27cdbaccf30b890c40ed1da9fd4a3593a5cf94dae54fb34f8a4b74fcd3f/jsonschema_specifications-2025.4.1-py3-none-any.whl", hash = "sha256:4653bffbd6584f7de83a67e0d620ef16900b390ddc7939d56684d6c81e33f1af", size = 18437, upload-time = "2025-04-23T12:34:05.422Z" },
 ]
+
+[[package]]
+name = "jsonsir"
+version = "0.0.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/aa/bf/5c00c1dafaa3ca2c32e7641d9c2c6f9d6d76e127bde00eb600333a60c5bc/JsonSir-0.0.2.tar.gz", hash = "sha256:401447c5e931f7887851ce9bf2407fe34d5aab0b1467bb24bbbf3b760e5bd3fb", size = 2160, upload-time = "2015-01-16T11:10:03.466Z" }
 
 [[package]]
 name = "jupyter-client"
@@ -1728,6 +1749,19 @@ wheels = [
 ]
 
 [[package]]
+name = "python-easyconfig"
+version = "0.1.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyyaml" },
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/13/0c/307a2f3bb00c3b8475a112c4f00753bb392ae190c0d5664e58e4cdafb25b/Python-EasyConfig-0.1.7.tar.gz", hash = "sha256:b548f19ab850b55154f61162f314e3dbb276e11e3b26951b8a8fa0683c06bb29", size = 3028, upload-time = "2017-11-02T01:59:31.883Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b1/86/1138081cca360a02066eedaf301d0f358c35e0e0d67572acf9d6354edca9/Python_EasyConfig-0.1.7-py2.py3-none-any.whl", hash = "sha256:7127c2b1fe2d904dab307ff1c2002969a440b263098161fd7c14af41ac1448e9", size = 5356, upload-time = "2017-11-02T01:59:35.655Z" },
+]
+
+[[package]]
 name = "python-json-logger"
 version = "3.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1868,6 +1902,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e1/0a/929373653770d8a0d7ea76c37de6e41f11eb07559b103b1c02cafb3f7cf8/requests-2.32.4.tar.gz", hash = "sha256:27d0316682c8a29834d3264820024b62a36942083d52caf2f14c0591336d3422", size = 135258, upload-time = "2025-06-09T16:43:07.34Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7c/e4/56027c4a6b4ae70ca9de302488c5ca95ad4a39e190093d6c1a8ace08341b/requests-2.32.4-py3-none-any.whl", hash = "sha256:27babd3cda2a6d50b30443204ee89830707d396671944c998b5975b031ac2b2c", size = 64847, upload-time = "2025-06-09T16:43:05.728Z" },
+]
+
+[[package]]
+name = "resource"
+version = "0.2.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jsonform" },
+    { name = "jsonsir" },
+    { name = "python-easyconfig" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/64/13/2db7b02cecc646a1b53dcf40cce9586d9f860550b32d931a1eb3c7280d43/Resource-0.2.1.tar.gz", hash = "sha256:98354abd8efe73d5a10f21099d80bbef85ecedf7ca22a416ff20250a51acd916", size = 14913, upload-time = "2017-08-25T07:03:32.092Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/34/ad/9cd037c01c075f9a273c23557f8e71195d773d59d3881bbb26011d396c8b/Resource-0.2.1-py2.py3-none-any.whl", hash = "sha256:901ea1e98e223bda9040dcb5a432de84de86fd48c9ef63a90cfa35a140a5cf46", size = 25801, upload-time = "2017-08-25T07:03:37.185Z" },
 ]
 
 [[package]]
@@ -2194,6 +2242,20 @@ wheels = [
 ]
 
 [[package]]
+name = "tensorboardx"
+version = "2.6.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "packaging" },
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2b/c5/d4cc6e293fb837aaf9f76dd7745476aeba8ef7ef5146c3b3f9ee375fe7a5/tensorboardx-2.6.4.tar.gz", hash = "sha256:b163ccb7798b31100b9f5fa4d6bc22dad362d7065c2f24b51e50731adde86828", size = 4769801, upload-time = "2025-06-10T22:37:07.419Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e0/1d/b5d63f1a6b824282b57f7b581810d20b7a28ca951f2d5b59f1eb0782c12b/tensorboardx-2.6.4-py3-none-any.whl", hash = "sha256:5970cf3a1f0a6a6e8b180ccf46f3fe832b8a25a70b86e5a237048a7c0beb18e2", size = 87201, upload-time = "2025-06-10T22:37:05.44Z" },
+]
+
+[[package]]
 name = "tensorpack"
 version = "0.11"
 source = { registry = "https://pypi.org/simple" }
@@ -2322,12 +2384,12 @@ dependencies = [
     { name = "typing-extensions", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
 wheels = [
-    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp312-cp312-manylinux_2_28_x86_64.whl", hash = "sha256:ce6e6a1f4803ad62d1fe51cec3fe5ca14bcd8bc7cace7b09d5590f8147fa16ad" },
-    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp312-cp312-win_amd64.whl", hash = "sha256:f6c79eac0018f9d131479ee1b7a68edb030619a316bfbc69275043aa4f338e4c" },
-    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313-manylinux_2_28_x86_64.whl", hash = "sha256:d08144011e410b9d15914e7256e1b1708a90484cb2c03712199e0291856d4177" },
-    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313-win_amd64.whl", hash = "sha256:3aa7da5cc6b7df0e8c0754dea339bd31cd21b5620e84f53b2ac4be47e8bb2179" },
-    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313t-manylinux_2_28_x86_64.whl", hash = "sha256:637bdbd510920abce9370c4ff8b44bce6ace48dc1672e1ed42ff14e1e67497b9" },
-    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313t-win_amd64.whl", hash = "sha256:6b6a2baf405f6c7069f38658bd6f70dced6a06ee044102d05e0bd7310611fce3" },
+    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp312-cp312-manylinux_2_28_x86_64.whl" },
+    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp312-cp312-win_amd64.whl" },
+    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313-manylinux_2_28_x86_64.whl" },
+    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313-win_amd64.whl" },
+    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313t-manylinux_2_28_x86_64.whl" },
+    { url = "https://download.pytorch.org/whl/cu126/torch-2.8.0%2Bcu126-cp313-cp313t-win_amd64.whl" },
 ]
 
 [[package]]
@@ -2376,6 +2438,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/c2/11/cf4f9cd52533dfb5b0180b260ae796c7d757fac6ed9d730a75462300d8f2/torchpack-0.3.1.tar.gz", hash = "sha256:818cf345d07369c1dc9b111896db420511d660404953de62372893a107208669", size = 20086, upload-time = "2021-05-07T23:48:19.09Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e8/9e/ce231bd1d301c4d756a9caf5671895458aa1a77c98ae4276f140a47266c5/torchpack-0.3.1-py3-none-any.whl", hash = "sha256:9f2a9242af9f082ec4610dd3464920e652d1126bd9b31a0dae69c8f5f6d97691", size = 34495, upload-time = "2021-05-07T23:48:17.705Z" },
+]
+
+[[package]]
+name = "torchsummary"
+version = "1.5.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5b/64/aa68ef646bcccab489cac2a85d366559df7d9d24406dbbf3344703cbe33f/torchsummary-1.5.1.tar.gz", hash = "sha256:981bf689e22e0cf7f95c746002f20a24ad26aa6b9d861134a14bc6ce92230590", size = 3749, upload-time = "2018-09-26T05:07:30.226Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7d/18/1474d06f721b86e6a9b9d7392ad68bed711a02f3b61ac43f13c719db50a6/torchsummary-1.5.1-py3-none-any.whl", hash = "sha256:10f41d1743fb918f83293f13183f532ab1bb8f6639a1b89e5f8592ec1919a976", size = 2826, upload-time = "2018-09-26T05:07:28.635Z" },
 ]
 
 [[package]]

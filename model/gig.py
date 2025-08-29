@@ -1,16 +1,14 @@
 """
 Graph in Graph (GiG) ST-GCN implementation for skeleton-based action recognition.
-
 This module implements an advanced ST-GCN architecture with Graph in Graph mechanism,
 featuring:
 - SGU (Spatial Graph Unit): Standard spatial-temporal graph convolution
 - GVU (Graph Vertex Update): Vertex update mechanism with representative vertices
 - GGU (Graph Global Update): Global graph update for enhanced feature learning
-
 The architecture uses multi-scale temporal convolutions, channel-wise topology
 refinement graph convolution (CTRGC), and hierarchical graph processing.
-
 """
+
 
 import math
 import pdb
@@ -21,6 +19,7 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 import torch.nn.functional as F
+from torchsummary import summary
 
 # Global constants
 num_frames: int = 64
@@ -714,8 +713,7 @@ class Model(nn.Module):
         summarizes the global information of the skeleton.
         
         Args:
-            h: Input tensor of shape (N, C, T, V, M)
-            
+            h: Input tensor of shape (N, C, T, V, M)    
         Returns:
             Tensor with representative vertices added, shape (N, C, T, V+1, M)
         """
@@ -806,3 +804,12 @@ class Model(nn.Module):
         h4 = self.drop_out(h4)         # Apply dropout
 
         return self.fc(h4)
+    
+
+if __name__ == '__main__':
+    model = Model(num_class=60, num_point=25, num_person=2,
+                  graph='graph.ntu_rgb_d.Graph',
+                  in_channels=3, drop_out=0, adaptive=True).to('cuda:0')
+
+    # summary of torch model
+    summary(model,input_size=(3, 64, 25, 2))

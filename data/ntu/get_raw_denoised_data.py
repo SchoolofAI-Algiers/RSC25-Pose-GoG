@@ -23,6 +23,7 @@ import numpy as np
 import pickle
 import logging
 from typing import Dict, List, Tuple, Any, Optional, Union
+from project_setup import RAW_SKELS , DENOISED_SKELS
 
 # Type definitions for better code readability
 BodyData = Dict[str, Union[np.ndarray, List[int], float]]
@@ -33,8 +34,8 @@ JointsColorsResult = Tuple[np.ndarray, np.ndarray]
 
 # Configuration constants
 root_path: str = './'
-raw_data_file: str = osp.join(root_path, 'raw_data', 'raw_skes_data.pkl')
-save_path: str = osp.join(root_path, 'denoised_data')
+raw_data_file: str = osp.join(RAW_SKELS, 'raw_skes_data.pkl')
+save_path = DENOISED_SKELS
 
 if not osp.exists(save_path):
     os.mkdir(save_path)
