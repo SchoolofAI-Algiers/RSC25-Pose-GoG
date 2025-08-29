@@ -12,6 +12,8 @@ DENOISED_SKELS = PROJECT_ROOT / "data" / "ntu" / "denoised_data"
 
 DATA_PROCESSED = PROJECT_ROOT / "data" / "ntu"
 
+NTU_FINAL_PROCESSED_DATA = PROJECT_ROOT / "processed_data" / "ntu60"
+
 # Results directories
 RESULTS = PROJECT_ROOT / "results"
 RESULTS_FIGURES = RESULTS / "figures"
