@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+from matplotlib.animation import FuncAnimation , PillowWriter
 import random
 from data_feeders.bone_pairs import ntu_pairs   # your file
+from project_setup import NTU_FINAL_PROCESSED_DATA
 
 # Convert 1-based to 0-based indices for Python
 EDGES = [(i-1, j-1) for (i, j) in ntu_pairs if i > 0 and j > 0]
@@ -34,7 +35,7 @@ def plot_frame(joints, ax, color="blue"):
 
 def main():
     # Pick random dataset file
-    fname = random.choice(["NTU60_CS.npz", "NTU60_CV.npz"])
+    fname = random.choice([NTU_FINAL_PROCESSED_DATA / "NTU60_CS.npz", NTU_FINAL_PROCESSED_DATA / "NTU60_CV.npz"])
     data = np.load(fname)
 
     # Pick random sequence
@@ -61,7 +62,10 @@ def main():
         if (person2[frame] != 0).any():
             plot_frame(person2[frame], ax, color="red")
 
-    anim = FuncAnimation(fig, update, frames=seq.shape[0], interval=100, repeat=True,repeat_delay=1000)
+    anim = FuncAnimation(fig, update, frames=seq.shape[0], interval=100)
+    # save
+    # anim.save("skeleton_animation.gif", writer=PillowWriter(fps=10))
+
     plt.show()
 
 if __name__ == "__main__":
