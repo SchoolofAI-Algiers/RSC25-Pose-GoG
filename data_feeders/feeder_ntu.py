@@ -246,6 +246,7 @@ class DatasetFeeder(Dataset):
             
         Returns:
             Top-k accuracy as a float between 0.0 and 1.0
+
             
         Example:
             >>> dataset = DatasetFeeder('data.npz', split='test')

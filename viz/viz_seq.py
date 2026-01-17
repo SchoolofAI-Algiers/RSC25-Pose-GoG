@@ -62,7 +62,7 @@ def main():
         if (person2[frame] != 0).any():
             plot_frame(person2[frame], ax, color="red")
 
-    anim = FuncAnimation(fig, update, frames=seq.shape[0], interval=100)
+    anim = FuncAnimation(fig, update, frames=seq.shape[0], interval=10)
     # save
     # anim.save("skeleton_animation.gif", writer=PillowWriter(fps=10))
 

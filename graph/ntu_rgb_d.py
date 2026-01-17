@@ -6,7 +6,7 @@ import numpy as np
 from graph import graph_utils
 
 
-# This script constructs a graph representation for the NTU RGB+D dataset that models 26 joints.
+# This script constructs a graph representation for the NTU RGB+D dataset that models 25 joints.
 
 
 # bone_pairs.py
@@ -56,5 +56,5 @@ class Graph:
 
 if __name__ == "__main__":
     graph = Graph()
-    print("Adjacency Matrix:")
-    print(graph.A[2:,:,:])
+    print("Adjacency Matrix:")  # (3,25,25)
+    print(graph.A[0,:,:])
